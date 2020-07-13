@@ -8,7 +8,7 @@ import { IPost } from './post';
   providedIn: 'root'
 })
 export class PostService {
-  private readonly API_URL = 'http://jsonplaceholder.typicode.com/posts';
+  private readonly API_URL = 'http://localhost:8080/api/blogs';
   constructor(private http: HttpClient) { }
   getPosts(count = 10): Observable<IPost[]> {
     return this.http.get<IPost[]>(this.API_URL).pipe(
