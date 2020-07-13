@@ -19,5 +19,6 @@
   <div *ngIf="postForm.get('body').invalid && postForm.get('body').touched" style="color: red">
     Body is required and min length is 10
   </div>
+  <div *ngIf="message">{{message}}</div>
   <button type="submit">Submit</button>
 </form>

@@ -24,7 +24,7 @@ export class PostService {
   deletePost(id: number): Observable<any> {
     return this.http.delete(`${this.API_URL}/${id}`);
   }
-  updatePost(post: IPost): Observable<IPost> {
-    return this.http.patch<IPost>(`${this.API_URL}/${post.id}`, post);
+  updatePost(post: Partial<IPost>): Observable<IPost> {
+    return this.http.put<IPost>(this.API_URL, post);
   }
 }
