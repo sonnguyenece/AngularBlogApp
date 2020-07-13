@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IPost } from '../post';
-import { PostService } from '../post.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {IPost} from '../post';
+import {PostService} from '../post.service';
 
 @Component({
   selector: 'app-blog-edit',
@@ -17,21 +17,23 @@ export class BlogEditComponent implements OnInit {
     body: new FormControl(''),
   });
   private postId: number;
-   message: string;
+  message: string;
 
   constructor(
-private postService: PostService,
-private activeRoute: ActivatedRoute
-  ) {}
+    private postService: PostService,
+    private activeRoute: ActivatedRoute
+  ) {
+  }
 
   ngOnInit() {
-this.activeRoute.params.subscribe(params=>{
-  this.postId= params.id;
-  this.postService.getPostById(this.postId).subscribe(result=>{
-    this.postForm.setValue(result);
-  });
-});
+    this.activeRoute.params.subscribe(params => {
+      this.postId = params.id;
+      this.postService.getPostById(this.postId).subscribe(result => {
+        this.postForm.setValue(result);
+      });
+    });
   }
+
   onSubmit() {
     if (this.postForm.valid) {
       const {value} = this.postForm;
@@ -41,6 +43,7 @@ this.activeRoute.params.subscribe(params=>{
             title: '',
             body: ''
           });
+          this.message="SAVED!"
         }, error => console.log(error));
     }
   }
